@@ -27,7 +27,8 @@ module Fts
 
     def search(q)
       stems = get_stems(q)
-      self.joins(:stems).where("stems.stem" => stems).uniq
+      query = self.select("#{table_name}.*").joins(:stems).where("stems.stem" => stems).group("#{table_name}.id")
+      self.sorter.sort(query)
     end
 
     def get_stems(text)
