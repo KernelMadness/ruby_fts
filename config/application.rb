@@ -31,6 +31,6 @@ module RubyFts
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    ['sorters', 'splitters', 'stemmers'].each {|v| config.autoload_paths << Rails.root.join("app/#{v}")}
+    ['sorters', 'splitters', 'stemmers', 'fts_addons'].each {|v| config.autoload_paths << Rails.root.join("app/#{v}")}
   end
 end

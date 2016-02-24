@@ -3,7 +3,7 @@ module Fts
 
   included do
     has_many :stems, as: :entity, dependent: :delete_all
-    class_attribute :fields, :stemmer, :splitter, :sorter, :autoindex
+    class_attribute :fields, :stemmer, :splitter, :sorter, :autoindex, :addons
 
     after_save :reindex, :if => :autoindex?
   end
@@ -28,7 +28,11 @@ module Fts
     def search(q)
       stems = get_stems(q)
       query = self.select("#{table_name}.*").joins(:stems).where("stems.stem" => stems).group("#{table_name}.id")
-      self.sorter.sort(query)
+      query = self.sorter.sort(query)
+      self.addons.each do |addon|
+        query = addon.process(query)
+      end
+      query
     end
 
     def get_stems(text)
@@ -41,6 +45,7 @@ module Fts
       self.splitter = options[:splitter] || ::BaseSplitter
       self.sorter = options[:sorter] || ::BaseSorter
       self.autoindex = options[:autoindex]
+      self.addons = options[:addons] || []
     end
   end
 end

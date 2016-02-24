@@ -3,5 +3,5 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :title, :content
 
-  use_fts [:title, :content], autoindex: true
+  use_fts [:title, :content], autoindex: true, addons: [BaseHighlighter]
 end
