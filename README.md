@@ -5,7 +5,10 @@ It's a simple but extensible concept of Ruby-based fulltext search engine.
 Demo: https://ruby-fts.herokuapp.com/
 ## Usage
 ```ruby
-use_fts [:title, :content], autoindex: true, addons: [BaseHighlighter]
+class Article < ActiveRecord::Base
+  include Fts
+  use_fts [:title, :content], autoindex: true, addons: [BaseHighlighter]
+end
 ```
 
 ## Components
