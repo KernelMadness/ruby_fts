@@ -21,7 +21,7 @@ By default it comes with very simple components. Feel free to customize it yours
 
 You can use your custom stemmer
 ```ruby
-use_fts :content, stemmer: CustomStemmer
+use_fts [:content], stemmer: CustomStemmer
 ```
 
 ### Splitters
@@ -29,7 +29,7 @@ use_fts :content, stemmer: CustomStemmer
 
 You can use your custom splitter
 ```ruby
-use_fts :content, splitter: CustomSplitter
+use_fts [:content], splitter: CustomSplitter
 ```
 
 ### Sorters
@@ -37,7 +37,7 @@ use_fts :content, splitter: CustomSplitter
 
 You can use your custom sorter
 ```ruby
-use_fts :content, sorter: CustomSorter
+use_fts [:content], sorter: CustomSorter
 ```
 
 ### Addons
