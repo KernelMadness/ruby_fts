@@ -8,10 +8,16 @@
 </head>
 <body>
 <div class="container">
+  <%= flash_messages %>
   <div class="header clearfix">
     <h3 class="text-muted text-center logo"><%= link_to 'Ruby FTS engine', root_path %></h3>
   </div>
   <%= yield %>
+
+  <div class="footer">
+    <div class="pull-left">Try to search about <a href="/search?query=seals">seals</a></div>
+    <div class="pull-right"><a href="<%= url_for new_article_path %>">New article</a></div>
+  </div>
 </div>
 </body>
 </html>
