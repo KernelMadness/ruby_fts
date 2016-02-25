@@ -21,6 +21,10 @@ gem 'rails_12factor', group: :production
 gem 'fast-stemmer'
 gem 'simple_form'
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'poltergeist'
+end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
