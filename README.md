@@ -42,7 +42,7 @@ use_fts [:content], sorter: CustomSorter
 
 ### Addons
 FTS appends specified addons to query chain. You can write your own addon to extend search query.
-Word highlighting in this concept is done using Addons
+Word highlighting in this concept is done by using Addons
 
 ```ruby
 class BaseHighlighter
