@@ -33,6 +33,11 @@ RSpec.describe "Search" do
     expect(page).not_to have_text(galapagos.title)
   end
 
+  it "Searches case insensitive" do
+    search "FLIPPERED"
+    expect(page).to have_text(walrus.content)
+  end
+
   def search(query)
     fill_in :query, with: query
     click_on 'Search'
